@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"
+ 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ 
+ 	<display-name>mavenVeryImportant</display-name>
+ 	
+ 	<welcome-file-list>
+
+    	<welcome-file>index.jsp</welcome-file>
+
+  	</welcome-file-list>
+  
+  	<!-- 乱码处理 -->
+
+  	<filter>
+
+  		<filter-name>CharacterEncodingFilter</filter-name>
+
+  		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  	
+
+  		<!-- 声明整个项目所要使用的编码集 -->
+
+  		<init-param>
+ 
+ 			<param-name>encoding</param-name>
+
+  			<param-value>UTF-8</param-value>
+
+  		</init-param>
+
+  	
+  	<!-- 声明整个项目的ajax所要使用的编码集 -->
+
+  		<init-param>
+
+  			<param-name>forceEncoding</param-name>
+
+  			<param-value>true</param-value>
+
+  		</init-param>
+
+  	</filter>
+
+  
+  	<filter-mapping>
+ 
+ 		<filter-name>CharacterEncodingFilter</filter-name>
+
+  		<url-pattern>/*</url-pattern>
+  		
+  	</filter-mapping>
+  
+  	<!-- 声明spring的核心配置文件的位置及其名称 -->
+  	
+  	<context-param>
+
+  		<param-name>contextConfigLocation</param-name>
+
+  		<param-value>classpath:/beans.xml</param-value>
+
+  	</context-param>
+  
+  	<!-- 配置监听  监听的作用是用来在项目启动的时候加载容器当中的所有配置项 -->
+
+  	<listener>
+
+  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+
+  	</listener>
+  	
+  	<!-- 防止Spring内存溢出监听器 -->
+	
+	<listener>
+	
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	
+	</listener>
+  
+  	<!-- 配置springMVC的核心控制器 -->
+  	<servlet>
+
+  		<servlet-name>springmvc</servlet-name>
+
+  		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+ 
+ 		<!-- 声明springMVC的核心配置文件的位置及其名称 -->
+ 
+ 		<init-param>
+
+  			<param-name>contextConfigLocation</param-name>
+
+  			<param-value>classpath:/spring-mvc.xml</param-value>
+ 
+ 		</init-param>
+
+		<load-on-startup>1</load-on-startup>
+
+
+  	</servlet>
+  
+  	<servlet-mapping>
+ 
+ 		<servlet-name>springmvc</servlet-name>
+
+  		<url-pattern>/</url-pattern>
+
+  	</servlet-mapping>
+
+  
+</web-app>

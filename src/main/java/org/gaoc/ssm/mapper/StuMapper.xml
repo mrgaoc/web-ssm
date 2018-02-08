@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"mybatis-3-mapper.dtd" >
+
+<!-- 注意在mapper自动扫描的时候，namespace指向的是mapper的一个接口的路径，其代表的含义是：
+指定的接口需要的sql都放在该配置文件当中。
+ -->
+<mapper namespace="org.gaoc.ssm.mapper.UserMapper">
+	
+	<!-- getUserList -->
+	<select id="getUserList" resultType="user">
+		select * from user
+	</select>
+
+</mapper>
